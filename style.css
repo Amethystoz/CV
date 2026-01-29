@@ -1,0 +1,230 @@
+/* --- Pengaturan Dasar & Tema --- */
+:root {
+    --sb-yellow: #F7E600; /* Kuning Spons */
+    --sb-blue-light: #87CEEB; /* Biru Laut Terang */
+    --sb-blue-dark: #58ACFA; /* Biru Laut Gelap */
+    --sb-brown: #8B4513; /* Cokelat Celana/Kayu */
+    --sb-pink: #FF69B4; /* Pink Patrick */
+    --text-dark: #333;
+    --bubble-bg: rgba(255, 255, 255, 0.9); /* Latar belakang transparan untuk kartu */
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Comic Neue', cursive, sans-serif;
+    color: var(--text-dark);
+    /* Latar belakang gradasi laut dengan pola gelembung */
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2) 20px, transparent 21px),
+        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.2) 30px, transparent 31px),
+        linear-gradient(to bottom, var(--sb-blue-light), var(--sb-blue-dark));
+    background-attachment: fixed;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Tipografi */
+h1, h2, h3 {
+    font-family: 'Chewy', cursive;
+    margin-top: 0;
+}
+
+h1 {
+    color: var(--sb-yellow);
+    text-shadow: 3px 3px 0px var(--sb-brown), 5px 5px 0px rgba(0,0,0,0.2);
+    font-size: 3.5em;
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: var(--sb-blue-dark);
+    border-bottom: 3px dashed var(--sb-blue-light);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* --- Wadah Utama CV --- */
+.cv-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--sb-yellow);
+    /* Border ganda cokelat dan putih seperti celana SpongeBob */
+    border: 8px solid var(--sb-brown);
+    outline: 4px solid white;
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efek pori-pori spons di latar belakang wadah */
+.cv-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(var(--sb-brown) 10%, transparent 10%);
+    background-size: 30px 30px;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+/* --- Header Section --- */
+.main-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-frame {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    /* Bingkai seperti jendela kapal (porthole) */
+    border: 10px solid var(--sb-brown);
+    background-color: var(--sb-blue-light);
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.3), 0 5px 15px rgba(0,0,0,0.2);
+    flex-shrink: 0;
+}
+
+.profile-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.job-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--sb-brown);
+    margin: 0;
+    font-family: 'Chewy', cursive;
+}
+
+/* --- Layout Grid --- */
+.content-grid {
+    display: flex;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar {
+    flex: 1 1 300px; /* Lebar sidebar sekitar 1/3 */
+}
+
+.main-content {
+    flex: 2 1 500px; /* Lebar konten utama sekitar 2/3 */
+}
+
+/* --- Komponen Kartu (Bubble Card) --- */
+.bubble-card {
+    background: var(--bubble-bg);
+    border-radius: 25px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border: 4px solid var(--sb-blue-light);
+    position: relative;
+}
+
+/* Hiasan gelembung kecil di sudut */
+.bubble-card::after {
+    content: '°o O';
+    position: absolute;
+    top: -20px;
+    right: 15px;
+    color: var(--sb-blue-light);
+    font-family: 'Chewy';
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* --- List & Item Styling --- */
+ul {
+    list-style: none;
+    padding-left: 10px;
+    margin: 0;
+}
+
+ul li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 30px;
+    line-height: 1.4;
+}
+
+/* Mengganti bullet dengan bintang laut pink */
+ul li::before {
+    content: '★'; 
+    color: var(--sb-pink);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 1.3em;
+}
+
+.contact-info strong {
+    color: var(--sb-brown);
+}
+
+/* Styling khusus untuk item pendidikan */
+.edu-item {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px dotted var(--sb-blue-light);
+}
+.edu-item:last-child {
+    border-bottom: none;
+}
+
+.edu-item h3 {
+    margin-bottom: 5px;
+    color: var(--sb-brown);
+    font-size: 1.3em;
+}
+
+.edu-date {
+    font-weight: bold;
+    color: var(--sb-blue-dark);
+    font-size: 0.9em;
+    margin-top: 0;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+    font-family: 'Chewy', cursive;
+    font-size: 1.2em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* --- Responsif untuk Layar Kecil (HP) --- */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    h1 { font-size: 2.8em; }
+
+    .content-grid {
+        flex-direction: column;
+    }
+
+    .sidebar, .main-content {
+        flex: 1 1 100%;
+    }
+    
+    .cv-wrapper {
+        padding: 25px;
+    }
+}
